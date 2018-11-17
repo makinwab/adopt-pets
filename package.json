@@ -7,7 +7,10 @@
     "format": "prettier --write \"src/**/*.{js, jsx, css, html, json}\"",
     "format:check": "prettier --list-different \"src/**/*.{js, jsx, css, html, json}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --silent",
+    "test:update": "jest -u --silent",
+    "test:watch": "jest --silent --watch",
+    "test:coverage": "jest --silent --coverage",
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html"
   },
@@ -25,8 +28,10 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
     "parcel-bundler": "^1.10.3",
-    "prettier": "^1.15.2"
+    "prettier": "^1.15.2",
+    "react-test-renderer": "^16.6.3"
   },
   "dependencies": {
     "@reach/router": "^1.2.1",

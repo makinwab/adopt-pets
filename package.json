@@ -12,7 +12,8 @@
     "test:watch": "jest --silent --watch",
     "test:coverage": "jest --silent --coverage",
     "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "build": "parcel build --public-url ./dist/ src/index.html",
+    "start": "npm run build && babel-node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -35,7 +36,10 @@
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "emotion": "^9.2.12",
+    "express": "^4.16.4",
     "http2": "^3.3.7",
     "petfinder-client": "0.0.3",
     "react": "^16.6.3",

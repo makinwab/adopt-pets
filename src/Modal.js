@@ -1,21 +1,19 @@
 import React from "react";
 import { createPortal } from "react-dom";
 
-const modalRoot = document.getElementById("modal");
-
 class Modal extends React.Component {
   constructor(props) {
     super(props);
-
-    this.el = document.createElement("div");
   }
 
   componentDidMount() {
-    modalRoot.appendChild(this.el);
+    this.el = document.createElement("div");
+    this.modalRoot = document.getElementById("modal");
+    this.modalRoot.appendChild(this.el);
   }
 
   componentWillUnmount() {
-    modalRoot.removeChild(this.el);
+    this.modalRoot.removeChild(this.el);
   }
 
   render() {

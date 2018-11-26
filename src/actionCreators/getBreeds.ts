@@ -1,12 +1,19 @@
 import pf from "petfinder-client";
 
+if (!process.env.API_KEY || !process.env.API_SECRET) {
+  throw new Error("no API keys");
+}
+
 const petfinder = pf({
   key: process.env.API_KEY,
   secret: process.env.API_SECRET
 });
 
 export default function getBreeds() {
-  return function getBreedsThunk(dispatch, getState) {
+  return function getBreedsThunk(
+    dispatch: ({}) => void,
+    getState: () => { animal: string }
+  ) {
     const { animal } = getState();
 
     if (animal) {

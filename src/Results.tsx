@@ -1,28 +1,44 @@
 import React from "react";
-import pf from "petfinder-client";
+import pf, { Pet as PetType } from "petfinder-client";
 import Pet from "./Pet";
 import SearchBox from "./SearchBox";
 import { connect } from "react-redux";
+import { RouteComponentProps } from "@reach/router";
+
+if (!process.env.API_KEY || !process.env.API_SECRET) {
+  throw new Error("no API keys");
+}
 
 const petfinder = pf({
   key: process.env.API_KEY,
   secret: process.env.API_SECRET
 });
 
-class Results extends React.Component {
-  constructor(props) {
+interface Props {
+  location: string;
+  animal: string;
+  breed: string;
+  path: string;
+}
+
+interface State {
+  pets: PetType[];
+}
+
+class Results extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
-      pets: []
+      pets: [] as PetType[]
     };
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     this.search();
   }
 
-  search = () => {
+  public search = () => {
     petfinder.pet
       .find({
         output: "full",
@@ -31,7 +47,7 @@ class Results extends React.Component {
         location: this.props.location
       })
       .then(data => {
-        let pets;
+        let pets: PetType[];
 
         if (data.petfinder.pets && data.petfinder.pets.pet) {
           if (Array.isArray(data.petfinder.pets.pet)) {
@@ -47,13 +63,13 @@ class Results extends React.Component {
       });
   };
 
-  render() {
+  public render() {
     return (
       <div className="search">
         <SearchBox search={this.search} />
 
         {this.state.pets.map(pet => {
-          let breed;
+          let breed = "" as string;
 
           if (Array.isArray(pet.breeds.breed)) {
             breed = pet.breeds.breed.join(", ");
@@ -76,7 +92,7 @@ class Results extends React.Component {
   }
 }
 
-const mapStateToProps = ({ location, breed, animal }) => ({
+const mapStateToProps = ({ location, breed, animal }: Props) => ({
   location,
   breed,
   animal

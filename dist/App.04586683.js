@@ -28355,39 +28355,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var index = (0, _createEmotionStyled.default)(emotion, _react.default);
 var _default = index;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","emotion":"../node_modules/emotion/dist/index.esm.js","create-emotion-styled":"../node_modules/create-emotion-styled/dist/index.esm.js"}],"colors.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","emotion":"../node_modules/emotion/dist/index.esm.js","create-emotion-styled":"../node_modules/create-emotion-styled/dist/index.esm.js"}],"colors.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
-var _default = {
+exports.default = {
   primary: "#ad343e",
   secondary: "#f2af29",
   dark: "#333",
   light: "#000"
 };
-exports.default = _default;
-},{}],"NavBar.js":[function(require,module,exports) {
+},{}],"NavBar.tsx":[function(require,module,exports) {
 "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _router = require("@reach/router");
-
-var _reactEmotion = _interopRequireWildcard(require("react-emotion"));
-
-var _colors = _interopRequireDefault(require("./colors"));
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral(["\n  &:hover {\n    text-decoration: underline;\n  }\n"]);
@@ -28431,25 +28412,52 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var Spin = (0, _reactEmotion.keyframes)(_templateObject());
-var SpyGlass = (0, _reactEmotion.default)("span")(_templateObject2(), Spin);
-var Container = (0, _reactEmotion.default)("header")(_templateObject3(), _colors.default.dark);
-var NavLink = (0, _reactEmotion.default)(_router.Link)(_templateObject4());
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var react_1 = __importDefault(require("react"));
+
+var router_1 = require("@reach/router");
+
+var react_emotion_1 = __importStar(require("react-emotion"));
+
+var colors_1 = __importDefault(require("./colors"));
+
+var Spin = react_emotion_1.keyframes(_templateObject());
+var SpyGlass = react_emotion_1.default("span")(_templateObject2(), Spin);
+var Container = react_emotion_1.default("header")(_templateObject3(), colors_1.default.dark);
+var NavLink = react_emotion_1.default(router_1.Link)(_templateObject4());
 
 var NavBar = function NavBar() {
-  return _react.default.createElement(Container, null, _react.default.createElement(NavLink, {
+  return react_1.default.createElement(Container, null, react_1.default.createElement(NavLink, {
     to: "/"
-  }, "Adopt Me!"), _react.default.createElement(NavLink, {
+  }, "Adopt Me!"), react_1.default.createElement(NavLink, {
     to: "/search-params"
-  }, _react.default.createElement(SpyGlass, {
+  }, react_1.default.createElement(SpyGlass, {
     "aria-label": "search",
     role: "img"
   }, "\uD83D\uDD0D")));
 };
 
-var _default = NavBar;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","react-emotion":"../node_modules/react-emotion/dist/index.esm.js","./colors":"colors.js"}],"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
+exports.default = NavBar;
+},{"react":"../node_modules/react/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","react-emotion":"../node_modules/react-emotion/dist/index.esm.js","./colors":"colors.ts"}],"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30687,49 +30695,50 @@ var thunk = createThunkMiddleware();
 thunk.withExtraArgument = createThunkMiddleware;
 var _default = thunk;
 exports.default = _default;
-},{}],"reducers/location.js":[function(require,module,exports) {
+},{}],"reducers/location.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = locationReducer;
 
 function locationReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "Seattle, WA";
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
-  if (action.type == "SET_LOCATION") {
+  if (action.type === "SET_LOCATION") {
     return action.payload;
   } else {
     return state;
   }
 }
-},{}],"reducers/animal.js":[function(require,module,exports) {
+
+exports.default = locationReducer;
+},{}],"reducers/animal.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = animalReducer;
 
 function animalReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
-  if (action.type == "SET_ANIMAL") {
+  if (action.type === "SET_ANIMAL") {
     return action.payload;
   } else {
     return state;
   }
 }
-},{}],"reducers/breed.js":[function(require,module,exports) {
+
+exports.default = animalReducer;
+},{}],"reducers/breed.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = breedReducer;
 
 function breedReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
@@ -30737,286 +30746,108 @@ function breedReducer() {
 
   if (action.type === "SET_BREED") {
     return action.payload;
-  } else if (action.type == "SET_ANIMAL") {
+  } else if (action.type === "SET_ANIMAL") {
     return "";
   } else {
     return state;
   }
 }
-},{}],"reducers/breeds.js":[function(require,module,exports) {
+
+exports.default = breedReducer;
+},{}],"reducers/breeds.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = breedsReducer;
 
 function breedsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
-  if (action.type == "SET_BREEDS") {
+  if (action.type === "SET_BREEDS") {
     return action.payload;
   } else {
     return state;
   }
 }
-},{}],"reducers/index.js":[function(require,module,exports) {
+
+exports.default = breedsReducer;
+},{}],"reducers/index.ts":[function(require,module,exports) {
 "use strict";
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
 
-var _redux = require("redux");
+var redux_1 = require("redux");
 
-var _location = _interopRequireDefault(require("./location"));
+var location_1 = __importDefault(require("./location"));
 
-var _animal = _interopRequireDefault(require("./animal"));
+var animal_1 = __importDefault(require("./animal"));
 
-var _breed = _interopRequireDefault(require("./breed"));
+var breed_1 = __importDefault(require("./breed"));
 
-var _breeds = _interopRequireDefault(require("./breeds"));
+var breeds_1 = __importDefault(require("./breeds"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _default = (0, _redux.combineReducers)({
-  location: _location.default,
-  animal: _animal.default,
-  breed: _breed.default,
-  breeds: _breeds.default
+exports.default = redux_1.combineReducers({
+  location: location_1.default,
+  animal: animal_1.default,
+  breed: breed_1.default,
+  breeds: breeds_1.default
 });
-
-exports.default = _default;
-},{"redux":"../node_modules/redux/es/redux.js","./location":"reducers/location.js","./animal":"reducers/animal.js","./breed":"reducers/breed.js","./breeds":"reducers/breeds.js"}],"store.js":[function(require,module,exports) {
+},{"redux":"../node_modules/redux/es/redux.js","./location":"reducers/location.ts","./animal":"reducers/animal.ts","./breed":"reducers/breed.ts","./breeds":"reducers/breeds.ts"}],"../node_modules/redux-devtools-extension/index.js":[function(require,module,exports) {
 "use strict";
+
+var compose = require('redux').compose;
+
+exports.__esModule = true;
+exports.composeWithDevTools = (
+  typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ :
+    function() {
+      if (arguments.length === 0) return undefined;
+      if (typeof arguments[0] === 'object') return compose;
+      return compose.apply(null, arguments);
+    }
+);
+
+exports.devToolsEnhancer = (
+  typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION__ :
+    function() { return function(noop) { return noop; } }
+);
+
+},{"redux":"../node_modules/redux/es/redux.js"}],"store.ts":[function(require,module,exports) {
+"use strict";
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
 
-var _redux = require("redux");
+var redux_1 = require("redux");
 
-var _reduxThunk = _interopRequireDefault(require("redux-thunk"));
+var redux_thunk_1 = __importDefault(require("redux-thunk"));
 
-var _reducers = _interopRequireDefault(require("./reducers"));
+var reducers_1 = __importDefault(require("./reducers"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var redux_devtools_extension_1 = require("redux-devtools-extension");
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var store = (0, _redux.createStore)(_reducers.default, (0, _redux.compose)((0, _redux.applyMiddleware)(_reduxThunk.default), (typeof window === "undefined" ? "undefined" : _typeof(window)) === "object" && typeof window.devToolsExtension !== "undefined" ? window.devToolsExtension() : function (f) {
-  return f;
-}));
-var _default = store;
-exports.default = _default;
-},{"redux":"../node_modules/redux/es/redux.js","redux-thunk":"../node_modules/redux-thunk/es/index.js","./reducers":"reducers/index.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/bundle-loader.js":[function(require,module,exports) {
-var getBundleURL = require('./bundle-url').getBundleURL;
-
-function loadBundlesLazy(bundles) {
-  if (!Array.isArray(bundles)) {
-    bundles = [bundles];
-  }
-
-  var id = bundles[bundles.length - 1];
-
-  try {
-    return Promise.resolve(require(id));
-  } catch (err) {
-    if (err.code === 'MODULE_NOT_FOUND') {
-      return new LazyPromise(function (resolve, reject) {
-        loadBundles(bundles.slice(0, -1)).then(function () {
-          return require(id);
-        }).then(resolve, reject);
-      });
-    }
-
-    throw err;
-  }
-}
-
-function loadBundles(bundles) {
-  return Promise.all(bundles.map(loadBundle));
-}
-
-var bundleLoaders = {};
-
-function registerBundleLoader(type, loader) {
-  bundleLoaders[type] = loader;
-}
-
-module.exports = exports = loadBundlesLazy;
-exports.load = loadBundles;
-exports.register = registerBundleLoader;
-var bundles = {};
-
-function loadBundle(bundle) {
-  var id;
-
-  if (Array.isArray(bundle)) {
-    id = bundle[1];
-    bundle = bundle[0];
-  }
-
-  if (bundles[bundle]) {
-    return bundles[bundle];
-  }
-
-  var type = (bundle.substring(bundle.lastIndexOf('.') + 1, bundle.length) || bundle).toLowerCase();
-  var bundleLoader = bundleLoaders[type];
-
-  if (bundleLoader) {
-    return bundles[bundle] = bundleLoader(getBundleURL() + bundle).then(function (resolved) {
-      if (resolved) {
-        module.bundle.register(id, resolved);
-      }
-
-      return resolved;
-    });
-  }
-}
-
-function LazyPromise(executor) {
-  this.executor = executor;
-  this.promise = null;
-}
-
-LazyPromise.prototype.then = function (onSuccess, onError) {
-  if (this.promise === null) this.promise = new Promise(this.executor);
-  return this.promise.then(onSuccess, onError);
-};
-
-LazyPromise.prototype.catch = function (onError) {
-  if (this.promise === null) this.promise = new Promise(this.executor);
-  return this.promise.catch(onError);
-};
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"App.js":[function(require,module,exports) {
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactDom = require("react-dom");
-
-var _router = require("@reach/router");
-
-var _reactLoadable = _interopRequireDefault(require("react-loadable"));
-
-var _NavBar = _interopRequireDefault(require("./NavBar"));
-
-var _reactRedux = require("react-redux");
-
-var _store = _interopRequireDefault(require("./store"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var LoadableDetails = (0, _reactLoadable.default)({
-  loader: function loader() {
-    return require("_bundle_loader")(require.resolve("./Details"));
-  },
-  loading: function loading() {
-    return _react.default.createElement("h1", null, " loading split out code... ");
-  }
-});
-var LoadableResults = (0, _reactLoadable.default)({
-  loader: function loader() {
-    return require("_bundle_loader")(require.resolve("./Results"));
-  },
-  loading: function loading() {
-    return _react.default.createElement("h1", null, " loading split out code... ");
-  }
-});
-var LoadableSearchParams = (0, _reactLoadable.default)({
-  loader: function loader() {
-    return require("_bundle_loader")(require.resolve("./SearchParams"));
-  },
-  loading: function loading() {
-    return _react.default.createElement("h1", null, " loading split out code... ");
-  }
-});
-
-var App =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(App, _React$Component);
-
-  function App() {
-    _classCallCheck(this, App);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
-  }
-
-  _createClass(App, [{
-    key: "render",
-    value: function render() {
-      return _react.default.createElement("div", null, _react.default.createElement(_NavBar.default, null), _react.default.createElement(_reactRedux.Provider, {
-        store: _store.default
-      }, _react.default.createElement(_router.Router, null, _react.default.createElement(LoadableResults, {
-        path: "/"
-      }), _react.default.createElement(LoadableDetails, {
-        path: "/details/:id"
-      }), _react.default.createElement(LoadableSearchParams, {
-        path: "/search-params"
-      }))));
-    }
-  }]);
-
-  return App;
-}(_react.default.Component);
-
-(0, _reactDom.render)(_react.default.createElement(App, null), document.getElementById("root"));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","react-loadable":"../node_modules/react-loadable/lib/index.js","./NavBar":"NavBar.js","react-redux":"../node_modules/react-redux/es/index.js","./store":"store.js","_bundle_loader":"../node_modules/parcel-bundler/src/builtins/bundle-loader.js","./Details":[["Details.180b8e97.js","Details.js"],"Details.180b8e97.map","Details.js"],"./Results":[["Results.30829819.js","Results.js"],"Results.30829819.map","Results.js"],"./SearchParams":[["SearchParams.95c957bf.js","SearchParams.js"],"SearchParams.95c957bf.map","SearchParams.js"]}],"../node_modules/process/browser.js":[function(require,module,exports) {
+var store = redux_1.createStore(reducers_1.default, redux_devtools_extension_1.composeWithDevTools(redux_1.applyMiddleware(redux_thunk_1.default)));
+exports.default = store;
+},{"redux":"../node_modules/redux/es/redux.js","redux-thunk":"../node_modules/redux-thunk/es/index.js","./reducers":"reducers/index.ts","redux-devtools-extension":"../node_modules/redux-devtools-extension/index.js"}],"../node_modules/process/browser.js":[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
@@ -31477,19 +31308,504 @@ module.exports = function createPetfinderSingleton(creds) {
 };
 module.exports.ANIMALS = ANIMALS;
 
-},{"is-node":"../node_modules/is-node/index.js","browser-jsonp":"../node_modules/browser-jsonp/lib/jsonp.js"}],"actionCreators/getBreeds.js":[function(require,module,exports) {
+},{"is-node":"../node_modules/is-node/index.js","browser-jsonp":"../node_modules/browser-jsonp/lib/jsonp.js"}],"Carousel.tsx":[function(require,module,exports) {
 "use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = getBreeds;
 
-var _petfinderClient = _interopRequireDefault(require("petfinder-client"));
+var react_1 = __importDefault(require("react"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var Carousel =
+/*#__PURE__*/
+function (_react_1$default$Comp) {
+  _inherits(Carousel, _react_1$default$Comp);
 
-var petfinder = (0, _petfinderClient.default)({
+  function Carousel() {
+    var _this;
+
+    _classCallCheck(this, Carousel);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Carousel).apply(this, arguments));
+    _this.state = {
+      photos: [],
+      active: 0
+    };
+
+    _this.handleIndexClick = function (event) {
+      if (!(event.target instanceof HTMLElement)) {
+        return;
+      }
+
+      if (event.target.dataset.index) {
+        _this.setState({
+          active: +event.target.dataset.index
+        });
+      }
+    };
+
+    return _this;
+  }
+
+  _createClass(Carousel, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$state = this.state,
+          photos = _this$state.photos,
+          active = _this$state.active;
+      return react_1.default.createElement("div", {
+        className: "carousel"
+      }, react_1.default.createElement("img", {
+        src: photos[active].value,
+        alt: "primary animal"
+      }), react_1.default.createElement("div", {
+        className: "carousel-smaller"
+      }, photos.map(function (photo, index) {
+        return (
+          /* ideally have an image in a button with the button having the click event*/
+
+          /* eslint-disable-next-line */
+          react_1.default.createElement("img", {
+            onClick: _this2.handleIndexClick,
+            key: photo.value,
+            "data-index": index,
+            src: photo.value,
+            className: index === active ? "active" : "",
+            alt: "animal thumbnail"
+          })
+        );
+      })));
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(_ref) {
+      var media = _ref.media;
+      var photos = [];
+
+      if (media && media.photos && media.photos.photo) {
+        photos = media.photos.photo.filter(function (photo) {
+          return photo["@size"] === "pn";
+        });
+      }
+
+      return {
+        photos: photos
+      };
+    }
+  }]);
+
+  return Carousel;
+}(react_1.default.Component);
+
+exports.default = Carousel;
+},{"react":"../node_modules/react/index.js"}],"Modal.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var react_1 = __importDefault(require("react"));
+
+var react_dom_1 = require("react-dom");
+
+var modalRoot = document.getElementById("modal");
+
+var Modal =
+/*#__PURE__*/
+function (_react_1$default$Comp) {
+  _inherits(Modal, _react_1$default$Comp);
+
+  function Modal() {
+    var _this;
+
+    _classCallCheck(this, Modal);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Modal).apply(this, arguments));
+    _this.el = document.createElement("div");
+    return _this;
+  }
+
+  _createClass(Modal, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (modalRoot) {
+        modalRoot.appendChild(this.el);
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      if (modalRoot) {
+        modalRoot.removeChild(this.el);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react_dom_1.createPortal(this.props.children, this.el);
+    }
+  }]);
+
+  return Modal;
+}(react_1.default.Component);
+
+exports.default = Modal;
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js"}],"AdoptModalContent.tsx":[function(require,module,exports) {
+"use strict";
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var react_1 = __importDefault(require("react"));
+
+var Modal_1 = __importDefault(require("./Modal"));
+
+var AdoptModalContent = function AdoptModalContent(props) {
+  return react_1.default.createElement(Modal_1.default, null, react_1.default.createElement("h1", null, "Would you like to adopt ", props.name, "?"), react_1.default.createElement("div", {
+    className: "buttons"
+  }, react_1.default.createElement("button", {
+    onClick: props.toggleModal
+  }, " Yes "), react_1.default.createElement("button", {
+    onClick: props.toggleModal
+  }, " Definitely Yes ")));
+};
+
+exports.default = AdoptModalContent;
+},{"react":"../node_modules/react/index.js","./Modal":"Modal.tsx"}],"Details.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var react_1 = __importDefault(require("react"));
+
+var petfinder_client_1 = __importDefault(require("petfinder-client"));
+
+var react_loadable_1 = __importDefault(require("react-loadable"));
+
+var router_1 = require("@reach/router");
+
+var Carousel_1 = __importDefault(require("./Carousel"));
+
+if (!"99be234a728e8bdebb7ca46a2c558587" || !"93c91dbb309b482ba6b6d9eec874ddbb") {
+  throw new Error("no API keys");
+}
+
+var petfinder = petfinder_client_1.default({
+  key: "99be234a728e8bdebb7ca46a2c558587",
+  secret: "93c91dbb309b482ba6b6d9eec874ddbb"
+});
+var LoadableModalContent = react_loadable_1.default({
+  loader: function loader() {
+    return Promise.resolve().then(function () {
+      return __importStar(require("./AdoptModalContent"));
+    });
+  },
+  loading: function loading() {
+    return react_1.default.createElement("p", null, "Loading Modal...");
+  }
+});
+
+var Details =
+/*#__PURE__*/
+function (_react_1$default$Comp) {
+  _inherits(Details, _react_1$default$Comp);
+
+  function Details() {
+    var _this;
+
+    _classCallCheck(this, Details);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Details).apply(this, arguments));
+    _this.state = {
+      loading: true,
+      showModal: false,
+      name: "",
+      animal: "",
+      breed: "",
+      location: "",
+      description: "",
+      media: {}
+    };
+
+    _this.toggleModal = function () {
+      _this.setState({
+        showModal: !_this.state.showModal
+      });
+    };
+
+    return _this;
+  }
+
+  _createClass(Details, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      if (!this.props.id) {
+        return;
+      }
+
+      petfinder.pet.get({
+        output: "full",
+        id: this.props.id
+      }).then(function (data) {
+        if (!data.petfinder.pet) {
+          router_1.navigate("/");
+          return;
+        }
+
+        var pet = data.petfinder.pet;
+        var breed;
+
+        if (Array.isArray(pet.breeds.breed)) {
+          breed = pet.breeds.breed.join(", ");
+        } else {
+          breed = pet.breeds.breed;
+        }
+
+        _this2.setState({
+          name: pet.name,
+          breed: breed,
+          animal: pet.animal,
+          location: "".concat(pet.contact.city, ", ").concat(pet.contact.state),
+          description: pet.description,
+          media: pet.media,
+          loading: false
+        });
+      }).catch(function () {
+        router_1.navigate("/");
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.loading) {
+        return react_1.default.createElement("h1", null, "Current loading...");
+      }
+
+      var _this$state = this.state,
+          name = _this$state.name,
+          animal = _this$state.animal,
+          breed = _this$state.breed,
+          location = _this$state.location,
+          description = _this$state.description,
+          media = _this$state.media,
+          showModal = _this$state.showModal;
+      return react_1.default.createElement("div", {
+        className: "details"
+      }, react_1.default.createElement(Carousel_1.default, {
+        media: media
+      }), react_1.default.createElement("div", null, react_1.default.createElement("h1", null, name), react_1.default.createElement("h2", null, animal, " - ", breed, " - ", location), react_1.default.createElement("button", {
+        onClick: this.toggleModal
+      }, "Adopt ", name), react_1.default.createElement("p", null, description), showModal ? react_1.default.createElement(LoadableModalContent, {
+        toggleModal: this.toggleModal,
+        name: name
+      }) : null));
+    }
+  }]);
+
+  return Details;
+}(react_1.default.Component);
+
+exports.default = Details;
+},{"react":"../node_modules/react/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","react-loadable":"../node_modules/react-loadable/lib/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","./Carousel":"Carousel.tsx","./AdoptModalContent":"AdoptModalContent.tsx"}],"Pet.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var react_1 = __importDefault(require("react"));
+
+var router_1 = require("@reach/router");
+
+var Pet =
+/*#__PURE__*/
+function (_react_1$default$Comp) {
+  _inherits(Pet, _react_1$default$Comp);
+
+  function Pet() {
+    _classCallCheck(this, Pet);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Pet).apply(this, arguments));
+  }
+
+  _createClass(Pet, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          name = _this$props.name,
+          animal = _this$props.animal,
+          breed = _this$props.breed,
+          media = _this$props.media,
+          location = _this$props.location,
+          id = _this$props.id;
+      var photos = [];
+
+      if (media && media.photos && media.photos.photo) {
+        photos = media.photos.photo.filter(function (photo) {
+          return photo["@size"] === "pn";
+        });
+      }
+
+      var hero = photos[0] ? photos[0].value : "http://placecorgi.com/300/300";
+      return react_1.default.createElement(router_1.Link, {
+        to: "/details/".concat(id),
+        className: "pet"
+      }, react_1.default.createElement("div", {
+        className: "image-container"
+      }, react_1.default.createElement("img", {
+        src: hero,
+        alt: name
+      })), react_1.default.createElement("div", {
+        className: "info"
+      }, react_1.default.createElement("h1", null, name), react_1.default.createElement("h2", null, animal, " - ", breed, " - ", location)));
+    }
+  }]);
+
+  return Pet;
+}(react_1.default.Component);
+
+exports.default = Pet;
+},{"react":"../node_modules/react/index.js","@reach/router":"../node_modules/@reach/router/es/index.js"}],"actionCreators/getBreeds.ts":[function(require,module,exports) {
+"use strict";
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var petfinder_client_1 = __importDefault(require("petfinder-client"));
+
+if (!"99be234a728e8bdebb7ca46a2c558587" || !"93c91dbb309b482ba6b6d9eec874ddbb") {
+  throw new Error("no API keys");
+}
+
+var petfinder = petfinder_client_1.default({
   key: "99be234a728e8bdebb7ca46a2c558587",
   secret: "93c91dbb309b482ba6b6d9eec874ddbb"
 });
@@ -31523,13 +31839,14 @@ function getBreeds() {
     }
   };
 }
-},{"petfinder-client":"../node_modules/petfinder-client/index.js"}],"actionCreators/changeBreed.js":[function(require,module,exports) {
+
+exports.default = getBreeds;
+},{"petfinder-client":"../node_modules/petfinder-client/index.js"}],"actionCreators/changeBreed.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = changeBreed;
 
 function changeBreed(breed) {
   return {
@@ -31537,13 +31854,14 @@ function changeBreed(breed) {
     payload: breed
   };
 }
-},{}],"actionCreators/changeAnimal.js":[function(require,module,exports) {
+
+exports.default = changeBreed;
+},{}],"actionCreators/changeAnimal.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = changeAnimal;
 
 function changeAnimal(animal) {
   return {
@@ -31551,13 +31869,14 @@ function changeAnimal(animal) {
     payload: animal
   };
 }
-},{}],"actionCreators/changeLocation.js":[function(require,module,exports) {
+
+exports.default = changeAnimal;
+},{}],"actionCreators/changeLocation.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = changeLocation;
 
 function changeLocation(location) {
   return {
@@ -31565,29 +31884,10 @@ function changeLocation(location) {
     payload: location
   };
 }
-},{}],"SearchBox.js":[function(require,module,exports) {
+
+exports.default = changeLocation;
+},{}],"SearchBox.tsx":[function(require,module,exports) {
 "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _petfinderClient = require("petfinder-client");
-
-var _reactRedux = require("react-redux");
-
-var _getBreeds = _interopRequireDefault(require("./actionCreators/getBreeds"));
-
-var _changeBreed = _interopRequireDefault(require("./actionCreators/changeBreed"));
-
-var _changeAnimal = _interopRequireDefault(require("./actionCreators/changeAnimal"));
-
-var _changeLocation = _interopRequireDefault(require("./actionCreators/changeLocation"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -31607,77 +31907,97 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var react_1 = __importDefault(require("react"));
+
+var petfinder_client_1 = require("petfinder-client");
+
+var react_redux_1 = require("react-redux");
+
+var getBreeds_1 = __importDefault(require("./actionCreators/getBreeds"));
+
+var changeBreed_1 = __importDefault(require("./actionCreators/changeBreed"));
+
+var changeAnimal_1 = __importDefault(require("./actionCreators/changeAnimal"));
+
+var changeLocation_1 = __importDefault(require("./actionCreators/changeLocation"));
+
 var SearchBox =
 /*#__PURE__*/
-function (_React$Component) {
-  _inherits(SearchBox, _React$Component);
+function (_react_1$default$Comp) {
+  _inherits(SearchBox, _react_1$default$Comp);
 
   function SearchBox() {
-    var _getPrototypeOf2;
-
     var _this;
-
-    var _temp;
 
     _classCallCheck(this, SearchBox);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SearchBox).apply(this, arguments));
 
-    return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SearchBox)).call.apply(_getPrototypeOf2, [this].concat(args))), _this.handleFormSubmit = function (event) {
+    _this.handleFormSubmit = function (event) {
       event.preventDefault();
 
       _this.props.search();
-    }, _temp));
+    };
+
+    return _this;
   }
 
   _createClass(SearchBox, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", {
+      return react_1.default.createElement("div", {
         className: "search-params"
-      }, _react.default.createElement("form", {
+      }, react_1.default.createElement("form", {
         onSubmit: this.handleFormSubmit
-      }, _react.default.createElement("label", {
+      }, react_1.default.createElement("label", {
         htmlFor: "location"
-      }, "Location", _react.default.createElement("input", {
+      }, "Location", react_1.default.createElement("input", {
         onChange: this.props.handleLocationChange,
         type: "text",
         id: "location",
         value: this.props.location,
         placeholder: "location"
-      })), _react.default.createElement("label", {
+      })), react_1.default.createElement("label", {
         htmlFor: "animal"
-      }, "Animal", _react.default.createElement("select", {
+      }, "Animal", react_1.default.createElement("select", {
         id: "animal",
         value: this.props.animal,
         onChange: this.props.handleAnimalChange,
         onBlur: this.props.handleAnimalChange
-      }, _react.default.createElement("option", null), _petfinderClient.ANIMALS.map(function (animal) {
-        return _react.default.createElement("option", {
+      }, react_1.default.createElement("option", null), petfinder_client_1.ANIMALS.map(function (animal) {
+        return react_1.default.createElement("option", {
           key: animal,
           value: animal
         }, animal);
-      }))), _react.default.createElement("label", {
+      }))), react_1.default.createElement("label", {
         htmlFor: "breed"
-      }, "Breed", _react.default.createElement("select", {
+      }, "Breed", react_1.default.createElement("select", {
         id: "breed",
         value: this.props.breed,
         onChange: this.props.handleBreedChange,
         onBlur: this.props.handleBreedChange,
         disabled: this.props.breeds.length === 0
-      }, _react.default.createElement("option", null), this.props.breeds.map(function (breed) {
-        return _react.default.createElement("option", {
+      }, react_1.default.createElement("option", null), this.props.breeds.map(function (breed) {
+        return react_1.default.createElement("option", {
           key: breed,
           value: breed
         }, breed);
-      }))), _react.default.createElement("button", null, "Submit")));
+      }))), react_1.default.createElement("button", null, "Submit")));
     }
   }]);
 
   return SearchBox;
-}(_react.default.Component);
+}(react_1.default.Component);
 
 var mapStateToProps = function mapStateToProps(_ref) {
   var breed = _ref.breed,
@@ -31695,22 +32015,344 @@ var mapStateToProps = function mapStateToProps(_ref) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     handleAnimalChange: function handleAnimalChange(event) {
-      dispatch((0, _changeAnimal.default)(event.target.value));
-      dispatch((0, _getBreeds.default)());
+      dispatch(changeAnimal_1.default(event.target.value));
+      dispatch(getBreeds_1.default());
     },
     handleBreedChange: function handleBreedChange(event) {
-      dispatch((0, _changeBreed.default)(event.target.value));
+      dispatch(changeBreed_1.default(event.target.value));
     },
     handleLocationChange: function handleLocationChange(event) {
-      dispatch((0, _changeLocation.default)(event.target.value));
+      dispatch(changeLocation_1.default(event.target.value));
     }
   };
 };
 
-var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SearchBox);
+exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SearchBox);
+},{"react":"../node_modules/react/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","react-redux":"../node_modules/react-redux/es/index.js","./actionCreators/getBreeds":"actionCreators/getBreeds.ts","./actionCreators/changeBreed":"actionCreators/changeBreed.ts","./actionCreators/changeAnimal":"actionCreators/changeAnimal.ts","./actionCreators/changeLocation":"actionCreators/changeLocation.ts"}],"Results.tsx":[function(require,module,exports) {
+"use strict";
 
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","react-redux":"../node_modules/react-redux/es/index.js","./actionCreators/getBreeds":"actionCreators/getBreeds.js","./actionCreators/changeBreed":"actionCreators/changeBreed.js","./actionCreators/changeAnimal":"actionCreators/changeAnimal.js","./actionCreators/changeLocation":"actionCreators/changeLocation.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var react_1 = __importDefault(require("react"));
+
+var petfinder_client_1 = __importDefault(require("petfinder-client"));
+
+var Pet_1 = __importDefault(require("./Pet"));
+
+var SearchBox_1 = __importDefault(require("./SearchBox"));
+
+var react_redux_1 = require("react-redux");
+
+if (!"99be234a728e8bdebb7ca46a2c558587" || !"93c91dbb309b482ba6b6d9eec874ddbb") {
+  throw new Error("no API keys");
+}
+
+var petfinder = petfinder_client_1.default({
+  key: "99be234a728e8bdebb7ca46a2c558587",
+  secret: "93c91dbb309b482ba6b6d9eec874ddbb"
+});
+
+var Results =
+/*#__PURE__*/
+function (_react_1$default$Comp) {
+  _inherits(Results, _react_1$default$Comp);
+
+  function Results(props) {
+    var _this;
+
+    _classCallCheck(this, Results);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Results).call(this, props));
+
+    _this.search = function () {
+      petfinder.pet.find({
+        output: "full",
+        animal: _this.props.animal,
+        breed: _this.props.breed,
+        location: _this.props.location
+      }).then(function (data) {
+        var pets;
+
+        if (data.petfinder.pets && data.petfinder.pets.pet) {
+          if (Array.isArray(data.petfinder.pets.pet)) {
+            pets = data.petfinder.pets.pet;
+          } else {
+            pets = [data.petfinder.pets.pet];
+          }
+        } else {
+          pets = [];
+        }
+
+        _this.setState({
+          pets: pets
+        });
+      });
+    };
+
+    _this.state = {
+      pets: []
+    };
+    return _this;
+  }
+
+  _createClass(Results, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.search();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react_1.default.createElement("div", {
+        className: "search"
+      }, react_1.default.createElement(SearchBox_1.default, {
+        search: this.search
+      }), this.state.pets.map(function (pet) {
+        var breed = "";
+
+        if (Array.isArray(pet.breeds.breed)) {
+          breed = pet.breeds.breed.join(", ");
+        }
+
+        return react_1.default.createElement(Pet_1.default, {
+          key: pet.id,
+          id: pet.id,
+          animal: pet.animal,
+          name: pet.name,
+          breed: breed,
+          media: pet.media,
+          location: "".concat(pet.contact.city, ", ").concat(pet.contact.state)
+        });
+      }));
+    }
+  }]);
+
+  return Results;
+}(react_1.default.Component);
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var location = _ref.location,
+      breed = _ref.breed,
+      animal = _ref.animal;
+  return {
+    location: location,
+    breed: breed,
+    animal: animal
+  };
+};
+
+exports.default = react_redux_1.connect(mapStateToProps)(Results);
+},{"react":"../node_modules/react/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","./Pet":"Pet.tsx","./SearchBox":"SearchBox.tsx","react-redux":"../node_modules/react-redux/es/index.js"}],"SearchParams.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var react_1 = __importDefault(require("react"));
+
+var SearchBox_1 = __importDefault(require("./SearchBox"));
+
+var router_1 = require("@reach/router");
+
+var SearchParams =
+/*#__PURE__*/
+function (_react_1$default$Comp) {
+  _inherits(SearchParams, _react_1$default$Comp);
+
+  function SearchParams() {
+    _classCallCheck(this, SearchParams);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SearchParams).apply(this, arguments));
+  }
+
+  _createClass(SearchParams, [{
+    key: "handleSearchSubmit",
+    value: function handleSearchSubmit() {
+      router_1.navigate("/");
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react_1.default.createElement("div", {
+        className: "search-route"
+      }, react_1.default.createElement(SearchBox_1.default, {
+        search: this.handleSearchSubmit
+      }));
+    }
+  }]);
+
+  return SearchParams;
+}(react_1.default.Component);
+
+exports.default = SearchParams;
+},{"react":"../node_modules/react/index.js","./SearchBox":"SearchBox.tsx","@reach/router":"../node_modules/@reach/router/es/index.js"}],"App.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var react_1 = __importDefault(require("react"));
+
+var react_dom_1 = require("react-dom");
+
+var router_1 = require("@reach/router");
+
+var react_loadable_1 = __importDefault(require("react-loadable"));
+
+var NavBar_1 = __importDefault(require("./NavBar"));
+
+var react_redux_1 = require("react-redux");
+
+var store_1 = __importDefault(require("./store"));
+
+var LoadableDetails = react_loadable_1.default({
+  loader: function loader() {
+    return Promise.resolve().then(function () {
+      return __importStar(require("./Details"));
+    });
+  },
+  loading: function loading() {
+    return react_1.default.createElement("h1", null, " loading split out code... ");
+  }
+});
+var LoadableResults = react_loadable_1.default({
+  loader: function loader() {
+    return Promise.resolve().then(function () {
+      return __importStar(require("./Results"));
+    });
+  },
+  loading: function loading() {
+    return react_1.default.createElement("h1", null, " loading split out code... ");
+  }
+});
+var LoadableSearchParams = react_loadable_1.default({
+  loader: function loader() {
+    return Promise.resolve().then(function () {
+      return __importStar(require("./SearchParams"));
+    });
+  },
+  loading: function loading() {
+    return react_1.default.createElement("h1", null, " loading split out code... ");
+  }
+});
+
+var App =
+/*#__PURE__*/
+function (_react_1$default$Comp) {
+  _inherits(App, _react_1$default$Comp);
+
+  function App() {
+    _classCallCheck(this, App);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
+  }
+
+  _createClass(App, [{
+    key: "render",
+    value: function render() {
+      return react_1.default.createElement("div", null, react_1.default.createElement(NavBar_1.default, null), react_1.default.createElement(react_redux_1.Provider, {
+        store: store_1.default
+      }, react_1.default.createElement(router_1.Router, null, react_1.default.createElement(LoadableResults, {
+        path: "/"
+      }), react_1.default.createElement(LoadableDetails, {
+        path: "/details/:id"
+      }), react_1.default.createElement(LoadableSearchParams, {
+        path: "/search-params"
+      }))));
+    }
+  }]);
+
+  return App;
+}(react_1.default.Component);
+
+react_dom_1.render(react_1.default.createElement(App, null), document.getElementById("root"));
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","react-loadable":"../node_modules/react-loadable/lib/index.js","./NavBar":"NavBar.tsx","react-redux":"../node_modules/react-redux/es/index.js","./store":"store.ts","./Details":"Details.tsx","./Results":"Results.tsx","./SearchParams":"SearchParams.tsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -31737,7 +32379,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56826" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51776" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
@@ -31879,29 +32521,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}],"../node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js":[function(require,module,exports) {
-module.exports = function loadJSBundle(bundle) {
-  return new Promise(function (resolve, reject) {
-    var script = document.createElement('script');
-    script.async = true;
-    script.type = 'text/javascript';
-    script.charset = 'utf-8';
-    script.src = bundle;
-
-    script.onerror = function (e) {
-      script.onerror = script.onload = null;
-      reject(e);
-    };
-
-    script.onload = function () {
-      script.onerror = script.onload = null;
-      resolve();
-    };
-
-    document.getElementsByTagName('head')[0].appendChild(script);
-  });
-};
-},{}],0:[function(require,module,exports) {
-var b=require("../node_modules/parcel-bundler/src/builtins/bundle-loader.js");b.register("js",require("../node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js"));
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0,"App.js"], null)
-//# sourceMappingURL=/App.d36a57b6.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","App.tsx"], null)
+//# sourceMappingURL=/App.04586683.map

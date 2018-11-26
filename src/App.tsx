@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import { Router } from "@reach/router";
+import { Router, RouteComponentProps } from "@reach/router";
 import Loadable from "react-loadable";
 import NavBar from "./NavBar";
 import { Provider } from "react-redux";
@@ -27,8 +27,8 @@ const LoadableSearchParams = Loadable({
   }
 });
 
-class App extends React.Component {
-  render() {
+class App extends React.Component<RouteComponentProps> {
+  public render() {
     return (
       <div>
         <NavBar />

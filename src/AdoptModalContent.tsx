@@ -1,7 +1,12 @@
 import React from "react";
 import Modal from "./Modal";
 
-const AdoptModalContent = props => (
+interface Props {
+  name: string;
+  toggleModal: () => void;
+}
+
+const AdoptModalContent = (props: Props) => (
   <Modal>
     <h1>Would you like to adopt {props.name}?</h1>
     <div className="buttons">

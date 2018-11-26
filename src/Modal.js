@@ -4,11 +4,11 @@ import { createPortal } from "react-dom";
 class Modal extends React.Component {
   constructor(props) {
     super(props);
+    this.el = document.createElement("div");
+    this.modalRoot = document.getElementById("modal");
   }
 
   componentDidMount() {
-    this.el = document.createElement("div");
-    this.modalRoot = document.getElementById("modal");
     this.modalRoot.appendChild(this.el);
   }
 
